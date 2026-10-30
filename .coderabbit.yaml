@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+reviews:
+  review_details: true
+  auto_review:
+    enabled: false
+    auto_incremental_review: false
+    base_branches:
+      - "^trial/setup$"
+knowledge_base:
+  automatic_linking_mode: disabled
+  mcp:
+    usage: disabled
+  linked_repositories:
+    - repository: tkhq/test-sdk
+      instructions: Contains related review-lab wire-contract consumers and producers. Use the companion revision referenced in the PR description.
+    - repository: tkhq/test-rust-sdk
+      instructions: Contains related review-lab wire-contract consumers and producers. Use the companion revision referenced in the PR description.
+
