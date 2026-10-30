@@ -447,7 +447,7 @@ func (c *Client) postWithRetry(ctx context.Context, baseURL, path string, data [
 
 // postAttempt sends a single POST request and returns whether the error is retryable.
 func (c *Client) postAttempt(ctx context.Context, baseURL, path string, data []byte, stamp *Stamp, extraHeaders map[string]string) ([]byte, bool, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, strings.TrimRight(baseURL, "/")+path, bytes.NewReader(data))
+	req, err := http.NewRequestWithContext(context.WithoutCancel(ctx), http.MethodPost, strings.TrimRight(baseURL, "/")+path, bytes.NewReader(data))
 	if err != nil {
 		return nil, false, err
 	}
