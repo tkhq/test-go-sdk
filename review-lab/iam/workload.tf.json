@@ -11,8 +11,7 @@
           },
           "Condition": {
             "StringEquals": {
-              "issuer.example.invalid:sub": "system:serviceaccount:example:worker",
-              "issuer.example.invalid:aud": "sts.amazonaws.com"
+              "issuer.example.invalid:sub": "system:serviceaccount:example:worker"
             }
           }
         }
