@@ -1,0 +1,24 @@
+name: Local examples
+on:
+  push:
+    branches: ['trial/**']
+  pull_request:
+    branches: [main, trial/setup]
+permissions:
+  contents: read
+jobs:
+  examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe
+        with:
+          go-version: '1.27.1'
+          cache: false
+      - run: go test ./...
+      - run: go test ./...
+        working-directory: review-lab
+        env:
+          GOWORK: off

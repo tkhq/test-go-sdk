@@ -1,0 +1,22 @@
+{
+  "locals": {
+    "workload_policy": {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": "sts:AssumeRoleWithWebIdentity",
+          "Principal": {
+            "Federated": "arn:aws:iam::000000000000:oidc-provider/issuer.example.invalid"
+          },
+          "Condition": {
+            "StringEquals": {
+              "issuer.example.invalid:sub": "system:serviceaccount:example:worker",
+              "issuer.example.invalid:aud": "sts.amazonaws.com"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
