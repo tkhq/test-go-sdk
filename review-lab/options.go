@@ -6,12 +6,16 @@ type Options struct {
 	Replicas *int `json:"replicas,omitempty"`
 }
 
-func NewOptions(replicas *int) Options {
+func copyReplicas(replicas *int) *int {
 	if replicas == nil {
-		return Options{}
+		return nil
 	}
 	value := *replicas
-	return Options{Replicas: &value}
+	return &value
+}
+
+func NewOptions(replicas *int) Options {
+	return Options{Replicas: copyReplicas(replicas)}
 }
 
 func WriteOptions(replicas *int) ([]byte, error) {
