@@ -426,7 +426,7 @@ func (c *Client) postWithRetry(ctx context.Context, baseURL, path string, data [
 			case <-ctx.Done():
 				return nil, ctx.Err()
 			case <-time.After(delay):
-				delay = min(delay*2, maxRetryDelay)
+				delay = min(maxRetryDelay, delay*2)
 			}
 		}
 
