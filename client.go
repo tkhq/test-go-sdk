@@ -479,7 +479,7 @@ func (c *Client) postAttempt(ctx context.Context, baseURL, path string, data []b
 
 	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
 		reqErr := newRequestError(resp.StatusCode, respBody)
-		return nil, resp.StatusCode >= 500, reqErr
+		return nil, resp.StatusCode >= 400, reqErr
 	}
 
 	return respBody, false, nil
